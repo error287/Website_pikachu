@@ -58,25 +58,25 @@ function fetchDataAndRefresh() {
         statusImg.src = "assets/icons/status/dnd.png";
         statusImg.alt = "Do Not Disturb";
         statusImg.title = "Do Not Disturb";
-        status1.innerHTML = "&nbsp;Do Not Disturb. Feel free to message me."; // Add a non-breaking space before "DND"
+        status1.innerHTML = "&nbsp;Do Not Disturb. Feel free to message me."; 
         status1.style = "color: #f04747;"
       } else if (status == "online") {
         statusImg.src = "assets/icons/status/online.png";
         statusImg.alt = "Online";
         statusImg.title = "Online";
-        status1.innerHTML = "&nbsp;Online. Feel free to message me."; // Add a non-breaking space before "Online"
+        status1.innerHTML = "&nbsp;Online. Feel free to message me."; 
         status1.style = "color: #43b581;"
       } else if (status == "idle") {
         statusImg.src = "assets/icons/status/idle.png";
         statusImg.alt = "Idle";
         statusImg.title = "Idle";
-        status1.innerHTML = "&nbsp;Idle. Feel free to message me."; // Add a non-breaking space before "Idle"
+        status1.innerHTML = "&nbsp;Idle. Feel free to message me."; 
         status1.style = "color: #faa61a;"
       } else if (status == "offline") {
         statusImg.src = "assets/icons/status/offline.png";
         statusImg.alt = "Offline";
         statusImg.title = "Offline";
-        status1.innerHTML = "&nbsp;Offline. Feel free to message me."; // Add a non-breaking space before "Offline"
+        status1.innerHTML = "&nbsp;Offline. Feel free to message me.";
         status1.style = "color: #747f8e;"
       }
 
