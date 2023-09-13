@@ -42,6 +42,38 @@ function toggleDiscordText() {
 //    });
 //}
 
+// Define a function to get the dominant color from an image URL
+function getDominantColor(imageUrl, callback) {
+  const img = new Image();
+  img.crossOrigin = 'Anonymous'; // Enable cross-origin access for images
+  img.src = imageUrl;
+
+  img.onload = function () {
+      const colorThief = new ColorThief();
+      const dominantColor = colorThief.getColor(img);
+
+      // Convert the RGB values to a hex color code
+      const hexColor = rgbToHex(dominantColor[0], dominantColor[1], dominantColor[2]);
+
+      // Call the callback function with the dominant color as a hex color code
+      callback(hexColor);
+  };
+
+  img.onerror = function () {
+      console.error('Error loading image.');
+  };
+}
+
+// Function to convert RGB values to a hex color code
+function rgbToHex(r, g, b) {
+  return "#" + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+}
+
+
+
+
+
+
 function fetchDataAndRefresh() {
   fetch("https://api.lanyard.rest/v1/users/442142462857707520")
     .then(response => response.json())
@@ -52,33 +84,39 @@ function fetchDataAndRefresh() {
       const status1 = document.getElementById("status-1");
       const avatarImg = document.getElementById("discord-avatar");
       avatarImg.src = avatarUrl;
-
+      
+      console.log(data.data);
 
       if (status == "dnd") {
         statusImg.src = "assets/icons/status/dnd.png";
         statusImg.alt = "Do Not Disturb";
         statusImg.title = "Do Not Disturb";
-        status1.innerHTML = "&nbsp;Do Not Disturb. Feel free to message me."; 
-        status1.style = "color: #f04747;"
+        //status1.innerHTML = "&nbsp;Do Not Disturb. Feel free to message me."; 
+        //status1.style = "color: #f04747;"
       } else if (status == "online") {
         statusImg.src = "assets/icons/status/online.png";
         statusImg.alt = "Online";
         statusImg.title = "Online";
-        status1.innerHTML = "&nbsp;Online. Feel free to message me."; 
-        status1.style = "color: #43b581;"
+        //status1.innerHTML = "&nbsp;Online. Feel free to message me."; 
+        //status1.style = "color: #43b581;"
       } else if (status == "idle") {
         statusImg.src = "assets/icons/status/idle.png";
         statusImg.alt = "Idle";
         statusImg.title = "Idle";
-        status1.innerHTML = "&nbsp;Idle. Feel free to message me."; 
+        //status1.innerHTML = "&nbsp;Idle. Feel free to message me."; 
         status1.style = "color: #faa61a;"
       } else if (status == "offline") {
         statusImg.src = "assets/icons/status/offline.png";
         statusImg.alt = "Offline";
         statusImg.title = "Offline";
-        status1.innerHTML = "&nbsp;Offline. Feel free to message me.";
-        status1.style = "color: #747f8e;"
+        //status1.innerHTML = "&nbsp;Offline. Feel free to message me.";
+        //status1.style = "color: #747f8e;"
       }
+
+      getDominantColor(avatarUrl, function (hexColor) {
+              const avatarctn = document.getElementById("avatar-container");
+              avatarctn.style = `border-radius: 50%; border: 15px solid ${hexColor}; background-color: ${hexColor};`;
+      });
 
 
     })
