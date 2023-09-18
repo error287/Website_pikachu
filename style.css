@@ -111,7 +111,7 @@ svg {
 }
 
 #nammc-box:hover ~ .box {
-    transform: translateY(240px); 
+    transform: translateY(300px); 
     transition: transform 0.3s ease;
 }
 
@@ -159,9 +159,9 @@ svg {
     align-items: center;
     top: 100px; 
     margin-bottom: 20px;
-    border-radius: 50%; /* Makes the element circular */
-    border: 15px solid white; /* Add a 2px black border */
-    background-color: white; /* Fill the circle with black color */
+    border-radius: 50%; 
+    border: 15px solid white; 
+    background-color: white; 
 }
 
 #discord-avatar {
@@ -212,4 +212,3 @@ svg {
     height: 20px;
     border-radius: 50%;
 }
-
